@@ -35,7 +35,7 @@ const User = mongoose.model("User", userSchema);
 const newUser = new User({
   name: "Syed Hassan",
   email: "nh310",
-  password: "syed hasd",
+  password: "syed hasd", // pass should be hashed not string
 });
 
 newUser.save()
