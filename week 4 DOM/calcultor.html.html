@@ -1,0 +1,62 @@
+<html>
+    <script>
+        let timeout;
+        function debouncepopulardiv(){
+            clearTimeout(timeout)
+            timeout = setTimeout(function () {
+                populardiv()
+            }, 500);
+        } 
+        function populardiv(){
+            const a = document.getElementById("aa").value;
+            const b = document.getElementById("be").value;
+             //const element = document.getElementById("finalSum")
+             //element.innerHTML = parseInt(a) + parseInt(b);
+             fetch ("https://api.mathjs.org/v4/?expr= " + a + " %2B"  + b )
+             .then(function(responce) {
+                console.log(responce)
+                responce.text()
+                .then(function (ans) {
+                    document.getElementById("finalSum").innerHTML = ans;
+                })
+             })
+        }
+    </script>
+
+    <body>
+    <input oninput="debouncepopulardiv()" id = "aa" type= "text" placeholder=" first number"> <br>
+    <input oninput="debouncepopulardiv()" id = "be"type= "text" placeholder=" second number"><br>
+    
+    <div id = "finalSum"></div> 
+
+    </body>
+</html> 
+
+<!-- <html>
+<body>
+    <style>
+        .container{
+            background-color: blueviolet;
+            font-size: 100;
+            padding: 20;
+            margin: 100;
+        }
+
+        #conatiner1 {
+            color: aquamarine;
+        }
+
+    </style>
+
+    <div class="container" id ="conatiner1"> 
+     hi there
+    </div>
+
+    <div class="container" id ="conatiner2" > 
+        hi there2
+       </div>
+</body>
+</html>
+
+
+1:28:32

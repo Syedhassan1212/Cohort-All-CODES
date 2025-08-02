@@ -1,0 +1,21 @@
+<html>
+    <script>
+        function todofunction() {
+            const title = document.getElementById("title").value;
+            const description = document.getElementById("description").value;
+            const childdiv = document.createElement("div")
+            childdiv.innerHTML = title;
+            document.getElementById("container").appendChild(childdiv);
+        }
+    </script>
+<div>
+    <input id="title" type = "text" placeholder="title"><br>
+    <input id="description" type = "text" placeholder="description"><br>
+    <button onclick="todofunction()">add todo</button>
+</div>
+<div id="container">
+    <div>description of todo</div>
+    <div>description of topic</div>
+    <button>mark as done</button>
+</div>
+</html>   

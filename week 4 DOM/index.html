@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realtime Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+        }
+        .calculator input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #4caf50;
+        }
+        .result-container {
+            background-color: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Sum Calculator</h2>
+        <input oninput="debouncepopulardiv()" id="aa" type="text" placeholder="First Number"> <br>
+        <input oninput="debouncepopulardiv()" id="be" type="text" placeholder="Second Number"><br>
+        
+        <div id="finalSum" class="result-container result">Enter numbers above</div>
+    </div>
+
+    <script>
+        let timeout;
+        function debouncepopulardiv() {
+            clearTimeout(timeout);
+            timeout = setTimeout(function () {
+                populardiv();
+            }, 500);
+        }
+        function populardiv() {
+            const a = document.getElementById("aa").value;
+            const b = document.getElementById("be").value;
+            fetch("https://api.mathjs.org/v4/?expr=" + a + "%2B" + b)
+                .then(function (response) {
+                    return response.text();
+                })
+                .then(function (ans) {
+                    document.getElementById("finalSum").innerHTML = ans;
+                })
+                .catch(function (error) {
+                    document.getElementById("finalSum").innerHTML = "Error: Invalid Input";
+                });
+        }
+    </script>
+</body>
+</html>
