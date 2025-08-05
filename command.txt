@@ -1,0 +1,93 @@
+#########################################
+# 🔧 GIT SETUP (One-time Configuration)
+#########################################
+
+git config --global user.name "SyedHassan1212"
+git config --global user.email "your@email.com"
+git config --list                          # Show current Git config
+
+#########################################
+# 🚀 STARTING A PROJECT
+#########################################
+
+git init                                   # Initialize Git in current folder
+git remote add origin <repo-url>          # Connect to GitHub repo
+git remote -v                              # Show current remotes
+git remote set-url origin <new-url>       # Change GitHub URL (HTTPS to SSH)
+
+#########################################
+# 📦 BASIC WORKFLOW (Make Changes & Push)
+#########################################
+
+git status                                 # Check what's changed
+git add .                                  # Stage ALL changed files
+git add <file>                             # Stage a specific file
+git add -p                                 # Stage changes in chunks
+git commit -m "your message"              # Commit with message
+git push                                   # Push to GitHub
+git pull                                   # Get latest from GitHub
+
+#########################################
+# 🕹️ UNDO STUFF (Because Mistakes Happen)
+#########################################
+
+git reset HEAD <file>                      # Unstage a file
+git checkout -- <file>                     # Undo changes in file
+git reset --soft HEAD~1                    # Undo last commit (keep code)
+git reset --hard HEAD~1                    # Undo last commit + erase changes
+
+#########################################
+# 🔍 HISTORY & LOGS
+#########################################
+
+git log                                    # Full commit history
+git log --oneline                          # One-line per commit
+git diff                                   # Show unstaged changes
+git diff --cached                          # Show staged changes
+
+#########################################
+# 🌱 BRANCHING (Optional, But Powerful)
+#########################################
+
+git branch                                 # List branches
+git branch <name>                          # Create new branch
+git checkout <branch>                      # Switch to branch
+git checkout -b <name>                     # Create + switch branch
+git merge <branch>                         # Merge a branch into current one
+git branch -d <name>                       # Delete branch
+
+#########################################
+# 🛡️ SSH Setup (To Stop Login Prompts)
+#########################################
+
+ssh-keygen -t ed25519 -C "your@email.com"
+cat ~/.ssh/id_ed25519.pub                 # Copy this to GitHub > SSH Keys
+git remote set-url origin git@github.com:USERNAME/REPO.git
+
+#########################################
+# ☠️ DANGEROUS BUT USEFUL
+#########################################
+
+git rm <file>                              # Delete a file and stage deletion
+git clean -fd                              # Delete ALL untracked files (careful!)
+git push --force                           # Force push (e.g., after history rewrite)
+
+#########################################
+# ✅ BONUS PRO TIPS
+#########################################
+
+git stash                                  # Save changes temporarily
+git stash pop                              # Reapply stashed changes
+git tag <v1.0>                             # Tag version
+git fetch                                  # Get changes without merging
+git clone <repo-url>                       # Clone repo
+
+# 💀 WARNING: Only use --force or reset --hard if you know what you’re doing!
+daily use
+cd your_project_folder
+git init
+git add .
+git commit -m "initial commit"
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+git branch -M main
+git push -u origin main
