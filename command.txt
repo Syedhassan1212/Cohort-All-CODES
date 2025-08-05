@@ -91,3 +91,7 @@ git commit -m "initial commit"
 git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
 git branch -M main
 git push -u origin main
+normal use 
+git add .                # Stage everything
+git commit -m "💥 update mongo routes"   # Save commit
+git push
