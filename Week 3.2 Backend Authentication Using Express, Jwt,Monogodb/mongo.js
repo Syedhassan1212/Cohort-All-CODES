@@ -1,5 +1,5 @@
 // const mongoose = require("mongoose");
-// mongoose.connect("mongodb+srv://nh31097:qwerty123@login.uqo3f9w.mongodb.net/")
+// mongoose.connect("")
 
 // const user = mongoose.model('user' , {name: String, email: String, password: String})
 
@@ -12,10 +12,10 @@
 // })
 //     user.save();
 
-
+require('dotenv').config()
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb+srv://nh31097:qwerty123@login.uqo3f9w.mongodb.net/", {
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
