@@ -1,10 +1,35 @@
 <html>
-    <body>
-       <input type="text" placeholder="input 1" id="ip1"></input>
-       <input type="text" placeholder="input 2" id="ip2"></input>
-       <button id="but" onclick="cal()">calc</button>
-       <!-- getting element from html -->
 
+<script>
+    
+
+async function cal(){
+    const ip1 = document.getElementById("ip1")
+    const ip2 = document.getElementById("ip2")
+    const final = document.getElementById("final")
+    const val1 = parseInt(ip1.value);
+    const val2 = parseInt(ip2.value);
+
+    //final.innerHTML =  val1 + val2
+    //using fetch to communicate with math.api 
+    try {
+     const res = await fetch("https://api.mathjs.org/v4/?expr=" + val1 + "%2B+" + val2)
+
+     if (!res.ok) throw new Error("something down")
+     const result = await res.text();
+    final.innerHTML = ("ANS = " + result)
+    //og link https://api.mathjs.org/v4/?expr=9%2B10 
+    } catch(err){
+        final.innerHTML = "someting not working check api"
+    }
+}
+</script>
+
+
+    <body>
+       <input  type="text" placeholder="input 1" id="ip1"></input>
+       <input  type="text" placeholder="input 2" id="ip2"></input>
+       <button id="but" onclick="cal()">calc</button>
        
 
        <!-- for print in html or update value  -->
@@ -13,22 +38,6 @@
 
     </body>
 
-<script>
-    const ip1 = document.getElementById("ip1")
-    const ip2 = document.getElementById("ip2")
 
-    const final = document.getElementById("final")
-
-
-
-
-function cal(){
-
-    const val1 = parseInt(ip1.value);
-    const val2 = parseInt(ip2.value);
-
-     final.innerHTML =  val1 + val2
-}
-</script>
 
 </html>
