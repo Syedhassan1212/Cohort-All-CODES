@@ -7,6 +7,7 @@ function App() {
 
 return (
     <div> 
+      <Headerwithbutton></Headerwithbutton>
       <Header title='hassan'></Header>
       <Header title = "hassan"></Header>
 
@@ -26,9 +27,6 @@ return (
       </div>
   )
 }
-
-
-
 
 function Header({title}){
   return <div>
