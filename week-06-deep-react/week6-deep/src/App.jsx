@@ -47,8 +47,10 @@
 
 //building wrapper
 function App(){
+    return <div>
 <CardWrapper innerComponent={< Textcomponent /> }></CardWrapper>
-}
+<CardWrapper innerComponent={< Textcomponent /> }></CardWrapper>
+</div>}
 
 function Textcomponent (){
     return <div>
@@ -56,7 +58,7 @@ function Textcomponent (){
          </div>
 }
 function CardWrapper ({innerComponent}){
-    return <div> 
+    return <div style={{border : "2px solid black" , padding : 20}}> 
         {innerComponent}
         </div>
 
