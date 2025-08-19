@@ -46,22 +46,38 @@
 
 
 //building wrapper
+// function App(){
+//     return <div>
+// <CardWrapper innerComponent={< Textcomponent /> }></CardWrapper>
+// <CardWrapper innerComponent={< Textcomponent /> }></CardWrapper>
+// </div>}
+
+// function Textcomponent (){
+//     return <div>
+//          hi there 
+//          </div>
+// }
+// function CardWrapper ({innerComponent}){
+//     return <div style={{border : "2px solid black" , padding : 20}}> 
+//         {innerComponent}
+//         </div>
+
+// }
+
+// New way of doing it
+
 function App(){
     return <div>
-<CardWrapper innerComponent={< Textcomponent /> }></CardWrapper>
-<CardWrapper innerComponent={< Textcomponent /> }></CardWrapper>
-</div>}
-
-function Textcomponent (){
-    return <div>
-         hi there 
-         </div>
+        <CardWrapper>
+            hi there
+        </CardWrapper>
+    </div>
 }
-function CardWrapper ({innerComponent}){
-    return <div style={{border : "2px solid black" , padding : 20}}> 
-        {innerComponent}
-        </div>
-
+function CardWrapper({children}){
+    return <div style={{padding: 20, border: "2px solid black"}}>
+        {children}
+    </div>
 }
+
 
 export default App
