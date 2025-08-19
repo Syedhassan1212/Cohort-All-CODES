@@ -47,8 +47,19 @@
 
 //building wrapper
 function App(){
+<CardWrapper innerComponent={< Textcomponent /> }></CardWrapper>
+}
 
-
+function Textcomponent (){
+    return <div>
+         hi there 
+         </div>
+}
+function CardWrapper ({innerComponent}){
+    return <div> 
+        {innerComponent}
+        </div>
 
 }
+
 export default App
