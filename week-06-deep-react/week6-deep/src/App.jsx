@@ -33,7 +33,7 @@
 
 // // }
 
-// //use keyword memo
+// //use keyword memo //it will make it rerender components have changes
 // const Header = React.memo(
 // function Header({title}){
 //   return <div>
@@ -66,18 +66,28 @@
 
 // New way of doing it
 
-function App(){
-    return <div>
-        <CardWrapper>
-            hi there
-        </CardWrapper>
-    </div>
-}
-function CardWrapper({children}){
-    return <div style={{padding: 20, border: "2px solid black"}}>
-        {children}
-    </div>
-}
+// function App(){
+//     return <div>
+//         <CardWrapper>
+//             <CardWrapper>
+//                 hello
+//                 <CardWrapper> fdfd </CardWrapper>
+//             </CardWrapper>
+//             hi there
+//         </CardWrapper>
+//     </div>
+// }
+// function CardWrapper({children}){
+//     return <div style={{padding: 20, border: "2px solid black"}}>
+//         {children}
+//     </div>
+// }
+
+//hooks use effect, usecallback, usememo
+
+
+
+
 
 
 export default App
