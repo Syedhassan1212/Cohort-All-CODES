@@ -98,7 +98,7 @@ function App() {
       .then((res) => res.json())
       .then((json) => setAddress(json))
       .catch((err) => console.error("fetch cooked:", err));
-  }, []);
+  }, []); //useEffect(fn, []) → runs once → like onMount. or useEffect(fn, [x]) → runs whenever x changes →
 
   return (
     <div>
