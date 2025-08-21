@@ -2,6 +2,8 @@
 // import './App.css'
 // import React from 'react'
 
+// import { useEffect } from "react"
+
 //function App() {
 //   const [title, setTitle] = useState("my name is hassan")
 // function setTitle1(){
@@ -84,10 +86,31 @@
 // }
 
 //hooks use effect, usecallback, usememo
+//use effect 
 
+import { useEffect, useState } from "react";
 
+function App() {
+  const [address, setAddress] = useState(null);
 
+  useEffect(() => {
+    fetch("https://fakerapi.it/api/v2/addresses?_quantity=1")
+      .then((res) => res.json())
+      .then((json) => setAddress(json))
+      .catch((err) => console.error("fetch cooked:", err));
+  }, []);
 
+  return (
+    <div>
+      <h1>Random Address</h1>
+      {address ? (
+        <pre>{JSON.stringify(address, null, 2)}</pre>
+      ) : (
+        <p>Loading…</p>
+      )}
+    </div>
+  );
+}
 
+export default App;
 
-export default App
