@@ -85,32 +85,35 @@
 //     </div>
 // }
 
-//hooks use effect, usecallback, usememo
+//Week 6.2 Hooks use effect, usecallback, usememo
 //use effect 
 
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
-function App() {
-  const [address, setAddress] = useState(null);
+// function App() {
+//   const [address, setAddress] = useState(null);
 
-  useEffect(() => {
-    fetch("https://fakerapi.it/api/v2/addresses?_quantity=1")
-      .then((res) => res.json())
-      .then((json) => setAddress(json))
-      .catch((err) => console.error("fetch cooked:", err));
-  }, []); //useEffect(fn, []) → runs once → like onMount. or useEffect(fn, [x]) → runs whenever x changes →
+//   useEffect(() => {
+//     fetch("https://fakerapi.it/api/v2/addresses?_quantity=1")
+//       .then((res) => res.json())
+//       .then((json) => setAddress(json))
+//       .catch((err) => console.error("fetch cooked:", err));
+//   }, []); //useEffect(fn, []) → runs once → like onMount. or useEffect(fn, [x]) → runs whenever x changes →
 
-  return (
-    <div>
-      <h1>Random Address</h1>
-      {address ? (
-        <pre>{JSON.stringify(address, null, 2)}</pre>
-      ) : (
-        <p>Loading…</p>
-      )}
-    </div>
-  );
-}
+//   return (
+//     <div>
+//       <h1>Random Address</h1>
+//       {address ? (
+//         <pre>{JSON.stringify(address, null, 2)}</pre>
+//       ) : (
+//         <p>Loading…</p>
+//       )}
+//     </div>
+//   );
+// }
+
+
+
 
 export default App;
 
