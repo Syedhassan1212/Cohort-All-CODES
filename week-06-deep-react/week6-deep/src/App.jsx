@@ -123,12 +123,15 @@ import { Dashboard } from './pages/Dashboard';
 import { Landing } from './pages/Landing';
 function App(){
     return (
+        <div>
+        <div style={{background: "black" , color:"white"}}> top bar</div>
         <BrowserRouter>
         <Routes>
             <Route path="/dashboard" element = {<Dashboard></Dashboard>}></Route>
             <Route path = "/landing" element = {<Landing></Landing>}></Route>
         </Routes>
         </BrowserRouter>
+        </div>
     )
 }
 
