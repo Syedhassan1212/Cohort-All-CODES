@@ -117,7 +117,20 @@
 
 
 //Context prop drilling ContextApi
-
+//routing 
+import {BrowserRouter, Routes , Route} from 'react-router-dom'
+import { Dashboard } from './pages/Dashboard';
+import { Landing } from './pages/Landing';
+function App(){
+    return (
+        <BrowserRouter>
+        <Routes>
+            <Route path="/dashboard" element = {<Dashboard></Dashboard>}></Route>
+            <Route path = "/landing" element = {<Landing></Landing>}></Route>
+        </Routes>
+        </BrowserRouter>
+    )
+}
 
 
 
