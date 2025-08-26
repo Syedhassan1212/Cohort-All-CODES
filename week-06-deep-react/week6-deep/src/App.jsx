@@ -118,7 +118,7 @@
 
 //Context prop drilling ContextApi
 //routing 
-import {BrowserRouter, Routes , Route} from 'react-router-dom'
+import {BrowserRouter, Routes , Route, useNavigate  } from 'react-router-dom'
 import { Dashboard } from './pages/Dashboard';
 import { Landing } from './pages/Landing';
 function App(){
@@ -127,7 +127,7 @@ function App(){
         {/* <div style={{background: "black" , color:"white"}}> top bar</div> */}
         {/*Client side render*/}
 
-        <div>
+        {/* <div>
             <button onClick={()=>{
                 window.location.href('/dashboard')
             }
@@ -137,7 +137,13 @@ function App(){
             }
             }>landing</button>
             
-        </div>
+        </div> */}
+        {/* used navigate for minimum reload */}
+        <div>
+        <button onClick={() => navigate("/dashboard")}>Dashboard</button>
+        <button onClick={() => navigate("/landing")}>Landing</button>
+      </div>
+
         <BrowserRouter>
         <Routes>
             <Route path="/dashboard" element = {<Dashboard></Dashboard>}></Route>
