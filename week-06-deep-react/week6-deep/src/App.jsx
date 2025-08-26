@@ -118,43 +118,78 @@
 
 //Context prop drilling ContextApi
 //routing 
-import {BrowserRouter, Routes , Route, useNavigate  } from 'react-router-dom'
-import { Dashboard } from './pages/Dashboard';
-import { Landing } from './pages/Landing';
-function App(){
-    return (
-        <div>
-        {/* <div style={{background: "black" , color:"white"}}> top bar</div> */}
-        {/*Client side render*/}
+// import {BrowserRouter, Routes , Route, useNavigate  } from 'react-router-dom'
+// import { Dashboard } from './pages/Dashboard';
+// import { Landing } from './pages/Landing';
+// function App(){
+//     return (
+//         <div>
+//         {/* <div style={{background: "black" , color:"white"}}> top bar</div> */}
+//         {/*Client side render*/}
 
-        {/* <div>
-            <button onClick={()=>{
-                window.location.href('/dashboard')
-            }
-            }>dashboard</button>
-            <button onClick={()=>{
-                window.location.href('/landing')
-            }
-            }>landing</button>
+//         {/* <div>
+//             <button onClick={()=>{
+//                 window.location.href('/dashboard')
+//             }
+//             }>dashboard</button>
+//             <button onClick={()=>{
+//                 window.location.href('/landing')
+//             }
+//             }>landing</button>
             
-        </div> */}
-        {/* used navigate for minimum reload */}
-        <div>
+//         </div> */}
+//         {/* used navigate for minimum reload */}
+//         <div>
+//         <button onClick={() => navigate("/dashboard")}>Dashboard</button>
+//         <button onClick={() => navigate("/landing")}>Landing</button>
+//       </div>
+
+//         <BrowserRouter>
+//         <Routes>
+//             <Route path="/dashboard" element = {<Dashboard></Dashboard>}></Route>
+//             <Route path = "/landing" element = {<Landing></Landing>}></Route>
+//         </Routes>
+//         </BrowserRouter>
+//         </div>
+//     )
+// }
+
+
+
+// export default App;
+
+// fixed bugs
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { Dashboard } from "./pages/Dashboard";
+import { Landing } from "./pages/Landing";
+
+function App() {
+  const navigate = useNavigate(); // now it's usable
+
+  return (
+    <div>
+      {/* Navigation buttons */}
+      <div>
         <button onClick={() => navigate("/dashboard")}>Dashboard</button>
         <button onClick={() => navigate("/landing")}>Landing</button>
       </div>
 
-        <BrowserRouter>
-        <Routes>
-            <Route path="/dashboard" element = {<Dashboard></Dashboard>}></Route>
-            <Route path = "/landing" element = {<Landing></Landing>}></Route>
-        </Routes>
-        </BrowserRouter>
-        </div>
-    )
+      {/* Routes */}
+      <Routes>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/landing" element={<Landing />} />
+      </Routes>
+    </div>
+  );
 }
 
+// BrowserRouter should wrap the App component at the root
+function WrappedApp() {
+  return (
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
+}
 
-
-export default App;
-
+export default WrappedApp;
