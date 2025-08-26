@@ -124,7 +124,20 @@ import { Landing } from './pages/Landing';
 function App(){
     return (
         <div>
-        <div style={{background: "black" , color:"white"}}> top bar</div>
+        {/* <div style={{background: "black" , color:"white"}}> top bar</div> */}
+        {/*Client side render*/}
+
+        <div>
+            <button onClick={()=>{
+                window.location.href('/dashboard')
+            }
+            }>dashboard</button>
+            <button onClick={()=>{
+                window.location.href('/landing')
+            }
+            }>landing</button>
+            
+        </div>
         <BrowserRouter>
         <Routes>
             <Route path="/dashboard" element = {<Dashboard></Dashboard>}></Route>
