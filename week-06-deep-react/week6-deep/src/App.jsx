@@ -158,48 +158,70 @@
 
 // export default App;
 
-// fixed bugs
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-// import { Dashboard } from "./pages/Dashboard";
-// import { Landing } from "./pages/Landing"; // without default 
-// import  Landing  from "./pages/Landing"; with default 
-import React, { Suspense } from "react";
+// // fixed bugs
+// import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+// // import { Dashboard } from "./pages/Dashboard";
+// // import { Landing } from "./pages/Landing"; // without default 
+// // import  Landing  from "./pages/Landing"; with default 
+// import React, { Suspense } from "react";
 
-//integrate lazy loading for effiecient parse
-const Dashboard = React.lazy(()=> import("./pages/Dashboard"))
-const Landing = React.lazy(()=> import("./pages/Landing"))
+// //integrate lazy loading for effiecient parse
+// const Dashboard = React.lazy(()=> import("./pages/Dashboard"))
+// const Landing = React.lazy(()=> import("./pages/Landing"))
 
 
-function App() {
-  const navigate = useNavigate(); // now it's usable
+// function App() {
+//   const navigate = useNavigate(); // now it's usable
 
-  return (
-    <div>
-      {/* Navigation buttons */}
-      <div>
-        <button onClick={() => navigate("/dashboard")}>Dashboard</button>
-        <button onClick={() => navigate("/landing")}>Landing</button>
-      </div>
+//   return (
+//     <div>
+//       {/* Navigation buttons */}
+//       <div>
+//         <button onClick={() => navigate("/dashboard")}>Dashboard</button>
+//         <button onClick={() => navigate("/landing")}>Landing</button>
+//       </div>
 
-      {/* Routes */}
-      <Suspense fallback={<div>...loading</div>}>
-      <Routes>
-         <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/landing" element={<Landing />} />
-      </Routes>
-      </Suspense>
-      {/*  Suspense for loading cliend side */}
-    </div>
-  );
+//       {/* Routes */}
+//       <Suspense fallback={<div>...loading</div>}>
+//       <Routes>
+//          <Route path="/dashboard" element={<Dashboard />} />
+//           <Route path="/landing" element={<Landing />} />
+//       </Routes>
+//       </Suspense>
+//       {/*  Suspense for loading cliend side */}
+//     </div>
+//   );
+// }
+
+// // BrowserRouter should wrap the App component at the root
+// function WrappedApp() {
+//   return (
+//     <BrowserRouter>
+//       <App />
+//     </BrowserRouter>
+//   );
+// }
+
+// export default WrappedApp;
+
+
+//RECOIL , STATE MANAGMENT , CONTEXT API
+
+import { useContext , useState } from "react";
+import { CountContext } from "./context";
+function App(){
+const [count , setCount] = useState(0);
+return (
+  <div>
+    <CountContext.Provider value = {count}>
+      <Count setCount = {setCount}></Count>
+      </CountContext.Provider>
+  </div>
+)
 }
-
-// BrowserRouter should wrap the App component at the root
-function WrappedApp() {
-  return (
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  );
-}
-
-export default WrappedApp;
+function Count ({setCount}){
+return <div>
+  <CountRenderer/>
+  <Button setCount={setCount}></Button>
+</div>}
+export default App;
