@@ -161,8 +161,10 @@
 // fixed bugs
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 // import { Dashboard } from "./pages/Dashboard";
-// import { Landing } from "./pages/Landing";
-import React from "react";
+// import { Landing } from "./pages/Landing"; // without default 
+// import  Landing  from "./pages/Landing"; with default 
+import React, { Suspense } from "react";
+
 //integrate lazy loading for effiecient parse
 const Dashboard = React.lazy(()=> import("./pages/Dashboard"))
 const Landing = React.lazy(()=> import("./pages/Landing"))
@@ -180,10 +182,13 @@ function App() {
       </div>
 
       {/* Routes */}
+      <Suspense fallback={<div>...loading</div>}>
       <Routes>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/landing" element={<Landing />} />
+         <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/landing" element={<Landing />} />
       </Routes>
+      </Suspense>
+      {/*  Suspense for loading cliend side */}
     </div>
   );
 }
