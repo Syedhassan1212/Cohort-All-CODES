@@ -160,8 +160,13 @@
 
 // fixed bugs
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-import { Dashboard } from "./pages/Dashboard";
-import { Landing } from "./pages/Landing";
+// import { Dashboard } from "./pages/Dashboard";
+// import { Landing } from "./pages/Landing";
+import React from "react";
+//integrate lazy loading for effiecient parse
+const Dashboard = React.lazy(()=> import("./pages/Dashboard"))
+const Landing = React.lazy(()=> import("./pages/Landing"))
+
 
 function App() {
   const navigate = useNavigate(); // now it's usable
